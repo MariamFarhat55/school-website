@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000/api';
+const API = 'https://school-website-production-31eb.up.railway.app/api';
 
 async function doLogin() {
   const email = document.getElementById('email').value;
