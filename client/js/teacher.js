@@ -31,7 +31,9 @@ async function loadProfile() {
     document.getElementById('profile-meta').innerHTML = meta;
 
     // تحقق لو هو صاحب الصفحة  
-  if (loggedInToken && (loggedInRole === 'admin' || savedTeacherId === teacherId)) {
+const savedTeacherId = localStorage.getItem('teacherId');
+
+if (loggedInToken && (loggedInRole === 'admin' || savedTeacherId === teacherId)) {
   isOwner = true;
   document.getElementById('add-btn').style.display = 'inline-block';
   document.getElementById('instructions-section').style.display = 'block';
