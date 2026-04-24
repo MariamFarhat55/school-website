@@ -1,5 +1,10 @@
 const API = 'https://school-website-production-31eb.up.railway.app/api';
 
+function toggleMenu() {
+  const nav = document.getElementById('nav-links');
+  nav.classList.toggle('open');
+}
+
 // Scroll animations observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {

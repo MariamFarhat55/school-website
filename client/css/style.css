@@ -45,6 +45,47 @@
   100% { transform: translateX(-50%); }
 }
 
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background: var(--brown-dark);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 0;
+    background: #fdf6ec;
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 3px solid var(--gold);
+    z-index: 99;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+}
+
 /* ===== VARIABLES ===== */
 :root {
   --brown-dark:  #3a1200;
