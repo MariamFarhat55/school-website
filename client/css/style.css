@@ -85,6 +85,12 @@
     border-bottom: 1px solid var(--cream-dark);
   }
 }
+nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 /* ===== VARIABLES ===== */
 :root {
