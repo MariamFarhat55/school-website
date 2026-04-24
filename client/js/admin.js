@@ -217,7 +217,7 @@ async function loadTeachers() {
         <div style="display:flex; align-items:center; gap:1rem;">
           <div style="width:44px;height:44px;border-radius:50%;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;overflow:hidden;">
             ${t.teacherId?.photo
-              ? `<img src="${API.replace('/api','')}/uploads/${t.teacherId.photo}" style="width:100%;height:100%;object-fit:cover;"/>`
+              ? `<img src="${t.teacherId?.photo}" style="width:100%;height:100%;object-fit:cover;"/>`
               : `<i class="bi bi-person-fill" style="color:var(--gold);"></i>`}
           </div>
           <div>

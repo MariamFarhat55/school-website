@@ -28,7 +28,7 @@ function renderTeachers(teachers) {
       <div class="teacher-card">
         <div class="teacher-photo">
           ${t.photo
-            ? `<img src="${API.replace('/api','')}/uploads/${t.photo}" alt="${t.name}"/>`
+            ? `<img src="${t.photo}" alt="${t.name}"/>`
             : `<i class="bi bi-person-fill"></i>`}
         </div>
         <h5>${t.name}</h5>

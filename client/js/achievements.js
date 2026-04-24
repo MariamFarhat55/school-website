@@ -26,7 +26,7 @@ async function loadAchievements() {
             <div class="ach-icon">
               <i class="bi ${icons[i % icons.length]}"></i>
             </div>
-            ${a.image ? `<img src="${API.replace('/api','')}/uploads/${a.image}" class="ach-image" alt="${a.title}"/>` : ''}
+            ${a.image ? `<img src="${a.image}" class="ach-image" alt="${a.title}"/>` : ''}
             <h5>${a.title}</h5>
             <p>${a.description}</p>
           </div>
@@ -59,7 +59,7 @@ async function loadVideos() {
       <div class="col-md-4 fade-in">
         <div class="video-card">
           <video controls>
-            <source src="http://localhost:5000/uploads/${v.filename}" type="video/mp4"/>
+           <source src="${v.filename}" type="video/mp4"/>
           </video>
           <div class="video-info">
             <span>نادي العلوم والذكاء الاصطناعي</span>

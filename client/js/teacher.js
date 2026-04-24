@@ -14,7 +14,7 @@ async function loadProfile() {
     // الصورة
     if (teacher.photo) {
       document.getElementById('profile-photo').innerHTML =
-        `<img src="${API.replace('/api','')}/uploads/${teacher.photo}" alt="${teacher.name}"/>`;
+        `<img src="${teacher.photo}" alt="${teacher.name}"/>`;
     }
 
     document.getElementById('profile-name').textContent = teacher.name;
@@ -61,7 +61,7 @@ async function loadAchievements() {
         <div class="col-md-6 col-lg-4 fade-in">
             <div class="ach-card">
             ${isOwner ? `<button class="ach-delete" onclick="deleteAchievement('${a._id}')"><i class="bi bi-trash"></i></button>` : ''}
-            ${a.file ? `<img src="${API.replace('/api','')}/uploads/${a.file}" class="ach-image" alt="${a.title}" onerror="this.style.display='none'"/>` : ''}
+            ${a.file ? `<img src="${a.file}" class="ach-image" alt="${a.title}" onerror="this.style.display='none'"/>` : ''}
             <h6>${a.title}</h6>
             <p>${a.description}</p>
             <span class="ach-date">
