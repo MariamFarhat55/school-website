@@ -56,7 +56,7 @@ router.post('/register', upload.single('photo'), async (req, res) => {
     // Create teacher profile
     const teacher = new Teacher({
       name, subject, bio, email, phone,
-      photo: req.file ? req.file.filename : ''
+      photo: req.file ? req.file.path : ''
     });
     await teacher.save();
 
@@ -100,7 +100,7 @@ router.post('/:id/achievements', authMiddleware, upload.single('file'), async (r
     const achievement = new TeacherAchievement({
       teacherId: req.params.id,
       ...req.body,
-      file: req.file ? req.file.filename : ''
+      file: req.file ? req.file.path : ''
     });
     await achievement.save();
     res.status(201).json(achievement);

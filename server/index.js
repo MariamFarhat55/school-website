@@ -9,6 +9,11 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => {
+  req.setTimeout(300000);
+  res.setTimeout(300000);
+  next();
+});
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
@@ -22,6 +27,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/teachers', teachersRouter);
 app.use('/api/achievements', achievementsRouter);
 app.use('/api/videos', videosRouter);
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)

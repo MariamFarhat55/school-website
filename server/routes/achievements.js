@@ -35,7 +35,7 @@ router.post('/', authMiddleware, adminMiddleware, upload.single('image'), async 
   try {
     const achievement = new SchoolAchievement({
       ...req.body,
-      image: req.file ? req.file.filename : ''
+      image: req.file ? req.file.path : ''
     });
     await achievement.save();
     res.status(201).json(achievement);

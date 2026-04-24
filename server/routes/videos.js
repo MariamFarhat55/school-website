@@ -35,11 +35,12 @@ router.post('/', authMiddleware, adminMiddleware, upload.single('video'), async 
     const video = new Video({
       title: req.body.title,
       description: req.body.description,
-      filename: req.file ? req.file.filename : ''
+      filename: req.file ? req.file.path : ''
     });
     await video.save();
     res.status(201).json(video);
   } catch (err) {
+    console.log('Video error:', err.message);
     res.status(400).json({ message: err.message });
   }
 });
