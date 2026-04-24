@@ -26,7 +26,9 @@ const upload = multer({ storage });
 // GET all teachers - anyone can view
 router.get('/', async (req, res) => {
   try {
-    const teachers = await Teacher.find();
+    const approvedUsers = await User.find({ status: 'approved', role: 'teacher' }).select('teacherId');
+    const approvedIds = approvedUsers.map(u => u.teacherId);
+    const teachers = await Teacher.find({ _id: { $in: approvedIds } });
     res.json(teachers);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -89,9 +91,14 @@ router.get('/:id/achievements', async (req, res) => {
 // POST teacher achievement - teacher or admin only
 router.post('/:id/achievements', authMiddleware, upload.single('file'), async (req, res) => {
   try {
-    // Teacher can only add to their own profile
+    const user = await User.findById(req.user.id);
+    
+    // Check if approved
+    if (user.status !== 'approved' && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Account pending approval' });
+    }
+
     if (req.user.role === 'teacher') {
-      const user = await User.findById(req.user.id);
       if (user.teacherId.toString() !== req.params.id) {
         return res.status(403).json({ message: 'You can only add to your own profile' });
       }
@@ -108,7 +115,7 @@ router.post('/:id/achievements', authMiddleware, upload.single('file'), async (r
     res.status(400).json({ message: err.message });
   }
 });
-
+    
 // DELETE teacher achievement - teacher or admin only
 router.delete('/:id/achievements/:achievementId', authMiddleware, async (req, res) => {
   try {
