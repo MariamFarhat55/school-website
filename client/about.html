@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>عن المدرسة — أبي دجانة المتوسطة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
+  <style>
+   /* MISSION */
+.mission-section { padding: 5rem 0; background: var(--cream); }
+
+.mission-box {
+  background: var(--brown-dark);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(220, 200, 164, 0.2);
+}
+
+.mission-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(200,134,10,0.1) 0%, transparent 60%);
+}
+
+.mission-box h2 { font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--cream); font-weight: 700; margin-bottom: 1rem; position: relative; }
+.mission-box p { color: rgba(247,242,232,0.75); font-size: 1.05rem; line-height: 2; position: relative; }
+.mission-icon { font-size: 3.5rem; color: var(--gold); opacity: 0.3; position: absolute; left: 2rem; bottom: 1.5rem; }
+
+/* PRINCIPAL */
+.principal-section { padding: 5rem 0; background: var(--cream-dark); }
+
+.principal-box {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(58,18,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.principal-avatar {
+  min-width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--brown-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: var(--gold);
+  border: 3px solid var(--gold);
+}
+
+.principal-info h4 { font-family: 'Amiri', serif; font-size: 1.4rem; color: var(--brown-dark); font-weight: 700; margin-bottom: 0.25rem; }
+.principal-info span { font-size: 0.9rem; color: var(--gold); font-weight: 600; }
+
+/* VALUES */
+.values-section { padding: 5rem 0; background: var(--cream-dark); }
+
+.value-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  height: 100%;
+  border: 1px solid rgba(58,18,0,0.07);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 16px 16px 0 0;
+}
+
+.value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(58,18,0,0.1); }
+
+.value-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(200,134,10,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.value-icon i { font-size: 1.4rem; color: var(--gold); }
+.value-card h5 { font-weight: 700; color: var(--brown-dark); margin-bottom: 0.5rem; font-size: 1rem; }
+.value-card p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.75; }
+
+/* GOALS */
+.goals-section { padding: 5rem 0; background: var(--cream); }
+
+.goal-item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid rgba(58,18,0,0.07);
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+}
+
+.goal-item:hover { border-color: var(--gold); transform: translateX(-4px); }
+
+.goal-num {
+  min-width: 44px;
+  height: 44px;
+  background: var(--brown-dark);
+  color: var(--gold);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-family: 'Amiri', serif;
+}
+
+.goal-text h6 { font-weight: 700; color: var(--brown-dark); margin-bottom: 0.2rem; font-size: 0.95rem; }
+.goal-text p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.7; margin: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .principal-box { flex-direction: column; text-align: center; }
+}
+  </style>
+</head>
+<body>
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <div class="ticker-label">أخبار المدرسة</div>
+  <div class="ticker-wrapper">
+    <div class="ticker-content">
+      <span>🏆 الفوز بمسابقة التعلم النشط على مستوى إدارة تعليم مكة المكرمة</span>
+      <span>🌍 الفوز بمسابقة العالم الصغير على مستوى تعليم مكة</span>
+      <span>🔬 افتتاح نادي العلوم والذكاء الاصطناعي بالمدرسة</span>
+      <span>🎨 افتتاح معمل التربية الفنية بقيادة الأساتذة</span>
+      <span>🥇 حصول المدرسة على المركز الأول في دوري المدارس على مستوى مكة المكرمة</span>
+    </div>
+  </div>
+</div>
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo.png" alt="شعار المدرسة" onerror="this.style.display='none'"/>
+    <span>مدرسة أبي دجانة<br/>المتوسطة</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="about.html" class="active">عن المدرسة</a></li>
+    <li><a href="achievements.html">الإنجازات</a></li>
+    <li><a href="teachers.html">المعلمون</a></li>
+    <li><a href="login.html" class="btn-join">لوحة التحكم</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <h1>عن <span>المدرسة</span></h1>
+  <p>رسالتنا، قيمنا، وأهدافنا</p>
+  <div class="title-line"></div>
+</section>
+
+<!-- MISSION -->
+<section class="mission-section">
+  <div class="container">
+    <div class="mission-box fade-in">
+      <h2>رسالة المدرسة</h2>
+      <p>
+        بناء طالب معتزٍّ بدينه وهويته الوطنية، متميز علمياً ومهارياً، يمتلك مهارات المستقبل، وقادر على المنافسة والإسهام الفعّال في تنمية وطنه.
+      </p>
+      <i class="bi bi-book-fill mission-icon"></i>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPAL -->
+<section class="principal-section">
+  <div class="container">
+    <div class="text-center mb-4 fade-in">
+      <h2 class="section-title">قيادة <span>المدرسة</span></h2>
+      <div class="title-line mx-auto"></div>
+    </div>
+    <div class="row justify-content-center fade-in">
+      <div class="col-md-8">
+        <div class="principal-box">
+          <div class="principal-avatar">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div class="principal-info">
+            <h4>الأستاذ ياسر محمد العصيمي</h4>
+            <span>مدير مدرسة أبي دجانة المتوسطة</span>
+            <p style="color: var(--text-mid); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.7;">
+              يقود المسيرة التعليمية بخبرة وكفاءة، ويسعى لتحقيق التميز في جميع المجالات التعليمية والتربوية.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="container">
+    <div class="text-center mb-5 fade-in">
+      <h2 class="section-title">قيم <span>المدرسة</span></h2>
+      <div class="title-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-star-fill"></i></div>
+          <h5>التميز</h5>
+          <p>بناء جيل المستقبل وتقديم تعليم عالي الجودة وفق معايير هيئة تقويم التعليم والتدريب.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-people-fill"></i></div>
+          <h5>روح الفريق</h5>
+          <p>منظومة مدرسية متكاملة تعمل بروح الفريق الواحد لتحقيق الأهداف المشتركة.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-heart-fill"></i></div>
+          <h5>الاحترام</h5>
+          <p>تقدير المستفيدين من خدمات المدرسة، والتواصل الفعّال معهم في جميع الأوقات.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-shield-fill-check"></i></div>
+          <h5>المسؤولية</h5>
+          <p>خدمة منسوبي المدرسة والعناية بهم، وتقديم الدعم اللازم للمجتمع المدرسي على كافة المستويات.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-check-circle-fill"></i></div>
+          <h5>الالتزام</h5>
+          <p>تطبيق اللوائح والأنظمة والعمل بها وفق ما يرد من توجيهات وزارة التعليم والجهات ذات العلاقة.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOALS -->
+<section class="goals-section">
+  <div class="container">
+    <div class="text-center mb-5 fade-in">
+      <h2 class="section-title">أهداف <span>التخطيط المدرسي</span></h2>
+      <div class="title-line mx-auto"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="goal-item fade-in">
+          <div class="goal-num">١</div>
+          <div class="goal-text">
+            <h6>بناء الهوية</h6>
+            <p>بناء طالب معتزٍّ بدينه وهويته الوطنية، متميز علمياً ومهارياً، يمتلك مهارات المستقبل.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-in">
+          <div class="goal-num">٢</div>
+          <div class="goal-text">
+            <h6>جودة التعليم</h6>
+            <p>تقديم تعليم عالي الجودة وفق معايير هيئة تقويم التعليم والتدريب.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-in">
+          <div class="goal-num">٣</div>
+          <div class="goal-text">
+            <h6>العمل المؤسسي</h6>
+            <p>بناء منظومة مدرسية متكاملة تعمل بروح الفريق الواحد نحو أهداف مشتركة.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-in">
+          <div class="goal-num">٤</div>
+          <div class="goal-text">
+            <h6>خدمة المجتمع</h6>
+            <p>تقديم الدعم اللازم للمجتمع المدرسي على كافة المستويات والعناية بجميع المستفيدين.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-in">
+          <div class="goal-num">٥</div>
+          <div class="goal-text">
+            <h6>الالتزام المؤسسي</h6>
+            <p>تطبيق اللوائح والأنظمة وفق التوجيهات الصادرة من وزارة التعليم والجهات ذات العلاقة.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom: 0.5rem;">
+      <a href="https://maps.app.goo.gl/BMZe8yzaVaDfPsux7" target="_blank">
+        <i class="bi bi-geo-alt-fill"></i> حي الشرائع، مكة المكرمة
+      </a>
+      &nbsp;|&nbsp;
+      <a href="tel:0573400073"><i class="bi bi-telephone-fill"></i> 0573400073</a>
+    </p>
+    <p style="margin-top: 0.5rem; font-size: 0.82rem;">
+      © 2025 مدرسة أبي دجانة المتوسطة — جميع الحقوق محفوظة
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تسجيل الدخول — مدرسة أبي دجانة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
+  <style>
+    body {
+      min-height: 100vh;
+      background: var(--brown-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-box {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid rgba(200,134,10,0.2);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .login-logo {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-logo img { height: 70px; }
+
+    .login-logo h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      color: var(--brown-dark);
+      font-weight: 700;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .login-logo p {
+      color: var(--text-mid);
+      font-size: 0.88rem;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: var(--brown-dark);
+      font-size: 0.9rem;
+    }
+
+    .form-control {
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 10px;
+      padding: 0.65rem 1rem;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: none;
+    }
+
+    .login-err {
+      background: #fff5f5;
+      border: 1px solid #dc3545;
+      color: #dc3545;
+      font-size: 0.85rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.88rem;
+    }
+
+    .back-link a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link a:hover { color: var(--gold-light); }
+
+    .register-link {
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+    }
+
+    .register-link a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="assets/logo.png" alt="شعار المدرسة" onerror="this.style.display='none'"/>
+      <h2>مدرسة أبي دجانة</h2>
+      <p>تسجيل الدخول للوحة التحكم</p>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">البريد الإلكتروني</label>
+      <input type="email" class="form-control" id="email" placeholder="example@school.com"/>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">كلمة المرور</label>
+      <input type="password" class="form-control" id="password" placeholder="••••••••"/>
+    </div>
+
+    <div class="login-err" id="login-err">
+      <i class="bi bi-exclamation-circle me-2"></i>البريد الإلكتروني أو كلمة المرور غلط
+    </div>
+
+    <button class="btn-primary-custom w-100 mt-3" onclick="doLogin()">
+      <i class="bi bi-box-arrow-in-right me-2"></i>دخول
+    </button>
+
+    <div class="register-link">
+      معلم جديد؟ <a href="join.html">سجل هنا</a>
+    </div>
+
+    <div class="back-link">
+      <a href="index.html"><i class="bi bi-arrow-right me-1"></i>العودة للموقع</a>
+    </div>
+  </div>
+
+<script src="js/login.js"></script>
+</body>
+</html>

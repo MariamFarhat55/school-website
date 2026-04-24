@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>انضم كمعلم — مدرسة أبي دجانة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
+  <style>
+    .join-page {
+      min-height: 100vh;
+      background: var(--brown-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .join-box {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 520px;
+      border: 1px solid rgba(200,134,10,0.2);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .join-logo {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .join-logo img { height: 65px; }
+
+    .join-logo h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      color: var(--brown-dark);
+      font-weight: 700;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .join-logo p {
+      color: var(--text-mid);
+      font-size: 0.88rem;
+    }
+
+    .notice-box {
+      background: rgba(200,134,10,0.08);
+      border: 1px solid rgba(200,134,10,0.3);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .notice-box i {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    .notice-box p {
+      color: var(--text-mid);
+      font-size: 0.87rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: var(--brown-dark);
+      font-size: 0.9rem;
+    }
+
+    .optional-label {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      font-weight: 400;
+      margin-right: 0.3rem;
+    }
+
+    .form-control {
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 10px;
+      padding: 0.65rem 1rem;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: none;
+    }
+
+    .err-msg {
+      background: #fff5f5;
+      border: 1px solid #dc3545;
+      color: #dc3545;
+      font-size: 0.85rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    .success-msg {
+      background: rgba(25,135,84,0.08);
+      border: 1px solid #198754;
+      color: #198754;
+      font-size: 0.9rem;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.88rem;
+    }
+
+    .back-link a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="join-page">
+    <div class="join-box">
+      <div class="join-logo">
+        <img src="assets/logo.png" alt="شعار المدرسة" onerror="this.style.display='none'"/>
+        <h2>انضم كمعلم</h2>
+        <p>مدرسة أبي دجانة المتوسطة</p>
+      </div>
+
+      <div class="notice-box">
+        <i class="bi bi-info-circle-fill"></i>
+        <p>حسابك كمعلم يحتاج موافقة مدير المدرسة قبل تفعيل تسجيل الدخول، سيتم إشعارك عند القبول.</p>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">الاسم الكامل</label>
+        <input type="text" class="form-control" id="name" placeholder="اسمك الكامل"/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">المادة التي تدرسها</label>
+        <input type="text" class="form-control" id="subject" placeholder="مثال: رياضيات، لغة عربية..."/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">البريد الإلكتروني</label>
+        <input type="email" class="form-control" id="email" placeholder="example@email.com"/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">كلمة المرور</label>
+        <input type="password" class="form-control" id="password" placeholder="••••••••"/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">نبذة عنك <span class="optional-label">(اختياري)</span></label>
+        <textarea class="form-control" id="bio" rows="2" placeholder="نبذة مختصرة عن خبرتك..."></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">رقم الجوال <span class="optional-label">(اختياري)</span></label>
+        <input type="tel" class="form-control" id="phone" placeholder="05xxxxxxxx"/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">الصورة الشخصية <span class="optional-label">(اختياري)</span></label>
+        <input type="file" class="form-control" id="photo" accept="image/*"/>
+      </div>
+
+      <div class="err-msg" id="err-msg">
+        <i class="bi bi-exclamation-circle me-2"></i>
+        <span id="err-text">حدث خطأ، حاول مرة أخرى</span>
+      </div>
+
+      <button class="btn-primary-custom w-100 mt-3" onclick="doRegister()">
+        <i class="bi bi-person-plus-fill me-2"></i>تسجيل
+      </button>
+
+      <div class="success-msg" id="success-msg">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        تم تسجيل طلبك بنجاح! سيتم مراجعته من قبل مدير المدرسة.
+      </div>
+
+      <div class="back-link mt-3">
+        عندك حساب؟ <a href="login.html">سجل دخول</a>
+      </div>
+      <div class="back-link">
+        <a href="index.html"><i class="bi bi-arrow-right me-1"></i>العودة للموقع</a>
+      </div>
+    </div>
+  </div>
+
+<script src="js/join.js"></script>
+</body>
+</html>

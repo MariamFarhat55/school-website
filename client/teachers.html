@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>المعلمون — مدرسة أبي دجانة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
+  <style>
+    .teachers-page { padding: 5rem 0; background: var(--cream); }
+
+    .teacher-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(58,18,0,0.08);
+      transition: all 0.25s;
+      text-align: center;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(58,18,0,0.12);
+    }
+
+    .teacher-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      margin: 2rem auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--gold);
+      overflow: hidden;
+      border: 3px solid var(--cream-dark);
+    }
+
+    .teacher-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .teacher-card h5 {
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+
+    .teacher-subject {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .teacher-bio {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  padding: 0 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+
+  display: -webkit-box;
+
+  /* Standard property */
+  line-clamp: 2;
+
+  /* Webkit fallback */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+    .teacher-card-footer {
+      background: var(--cream);
+      padding: 0.75rem;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .teacher-card-footer a {
+      font-size: 0.85rem;
+      color: var(--brown-mid);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .teacher-card-footer a:hover { color: var(--gold); }
+
+    .search-bar {
+      background: white;
+      border-radius: 12px;
+      padding: 0.6rem 1rem;
+      border: 1.5px solid var(--cream-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 400px;
+      margin: 0 auto 3rem;
+      transition: border-color 0.2s;
+    }
+
+    .search-bar:focus-within { border-color: var(--gold); }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      flex: 1;
+      color: var(--text-dark);
+      background: transparent;
+    }
+
+    .search-bar i { color: var(--gold); font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <div class="ticker-label">أخبار المدرسة</div>
+  <div class="ticker-wrapper">
+    <div class="ticker-content"></div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo.png" alt="شعار المدرسة" onerror="this.style.display='none'"/>
+    <span>مدرسة أبي دجانة<br/>المتوسطة</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="about.html">عن المدرسة</a></li>
+    <li><a href="achievements.html">الإنجازات</a></li>
+    <li><a href="teachers.html" class="active">المعلمون</a></li>
+    <li><a href="login.html" class="btn-join">لوحة التحكم</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <h1>كادر <span>المعلمين</span></h1>
+  <p>نخبة من المعلمين المتميزين في مدرسة أبي دجانة</p>
+  <div class="title-line"></div>
+</section>
+
+<!-- TEACHERS -->
+<section class="teachers-page">
+  <div class="container">
+    <div class="search-bar fade-in">
+      <i class="bi bi-search"></i>
+      <input type="text" id="search-input" placeholder="ابحث عن معلم أو مادة..." oninput="filterTeachers()"/>
+    </div>
+    <div class="row g-4" id="teachers-container">
+      <div class="col-12 text-center py-4" id="loading">
+        <div class="spinner-border" style="color: var(--gold);" role="status"></div>
+      </div>
+    </div>
+    <div class="text-center py-4 d-none" id="no-results">
+      <p style="color: var(--text-mid);">لا توجد نتائج للبحث</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom: 0.5rem;">
+      <a href="https://maps.app.goo.gl/BMZe8yzaVaDfPsux7" target="_blank">
+        <i class="bi bi-geo-alt-fill"></i> حي الشرائع، مكة المكرمة
+      </a>
+      &nbsp;|&nbsp;
+      <a href="tel:0573400073"><i class="bi bi-telephone-fill"></i> 0573400073</a>
+    </p>
+    <p style="margin-top: 0.5rem; font-size: 0.82rem;">
+      © 2025 مدرسة أبي دجانة المتوسطة — جميع الحقوق محفوظة
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/teachers.js"></script>
+</body>
+</html>
