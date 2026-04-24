@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const Teacher = require('../models/Teacher');
 
 // Auth Middleware
 const authMiddleware = async (req, res, next) => {
@@ -51,18 +52,27 @@ router.post('/login', async (req, res) => {
       return res.status(403).json({ message: 'Account pending approval' });
     if (user.status === 'rejected')
       return res.status(403).json({ message: 'Account rejected' });
+    let teacherId = user.teacherId;
+
 
     const token = jwt.sign(
       { id: user._id, role: user.role, name: user.name },
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
+    if (!teacherId && user.role === 'teacher') {
+      const teacher = await Teacher.findOne({ email: user.email });
+      if (teacher) {
+        teacherId = teacher._id;
+      }
+    }
+
     res.json({
-      token,
-      role: user.role,
-      name: user.name,
-      teacherId: user.teacherId || null
-    });
+  token,
+  role: user.role,
+  name: user.name,
+  teacherId
+});
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
