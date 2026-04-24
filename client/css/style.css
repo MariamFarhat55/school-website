@@ -163,7 +163,11 @@ nav {
 }
 
 .nav-links a:hover { background: var(--cream-dark); color: var(--gold); }
-.nav-links a.active { color: var(--gold); font-weight: 700; }
+.nav-links a.active { 
+  color: var(--gold); 
+  font-weight: 700;
+  background: transparent;
+}
 
 .btn-join {
   background: var(--gold) !important;
