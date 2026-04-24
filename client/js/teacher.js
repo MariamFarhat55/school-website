@@ -139,8 +139,6 @@ function closeModal() {
   document.getElementById('modal').classList.remove('active');
 }
 
-// حفظ teacherId في localStorage بعد الـ login
-const urlTeacherId = new URLSearchParams(window.location.search).get('id');
-if (urlTeacherId) localStorage.setItem('teacherId', urlTeacherId);
+
 
 loadProfile();

@@ -29,10 +29,11 @@ async function doLogin() {
     localStorage.setItem('userName', data.name);
 
     if (data.role === 'admin') {
-      localStorage.setItem('adminToken', data.token);
-      window.location.href = 'admin.html';
+    localStorage.setItem('adminToken', data.token);
+    window.location.href = 'admin.html';
     } else if (data.role === 'teacher') {
-      window.location.href = `teacher.html?id=${data.teacherId}`;
+    localStorage.setItem('teacherId', data.teacherId); 
+    window.location.href = `teacher.html?id=${data.teacherId}`;
     }
 
   } catch (err) {
