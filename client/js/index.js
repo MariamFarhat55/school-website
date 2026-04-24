@@ -32,7 +32,6 @@ async function loadTeachers() {
           </div>
         </div>`;
       container.appendChild(card);
-      observer.observe(card);
     });
   } catch (e) {
     console.log('API not connected yet');
