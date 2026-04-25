@@ -1,4 +1,4 @@
-const API = 'https://school-website-production-31eb.up.railway.app/api';
+const API = 'https://mediumaquamarine-wallaby-658287.hostingersite.com/api';
 
 function toggleMenu() {
   const nav = document.getElementById('nav-links');
@@ -19,25 +19,29 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 // Load ticker
 async function loadTicker() {
   try {
-    const res = await fetch(`${API}/achievements/ticker`);
-    const achievements = await res.json();
+    const [schoolRes, teacherRes] = await Promise.all([
+      fetch(`${API}/achievements/ticker`),
+      fetch(`${API}/teachers`)
+    ]);
+    const schoolAch = await schoolRes.json();
+    const teachers = await teacherRes.json();
+
     const tickerContent = document.querySelector('.ticker-content');
-    if (!tickerContent || achievements.length === 0) return;
-    const items = [...achievements, ...achievements]
-      .map(a => `<span>🏆 ${a.title}</span>`)
-      .join('');
-    tickerContent.innerHTML = items;
+    if (!tickerContent) return;
+
+    const schoolItems = schoolAch.map(a => `<span>🏆 ${a.title}</span>`);
+    const teacherItems = teachers.map(t => `<span>👨‍🏫 ${t.name} — ${t.subject}</span>`);
+    const allItems = [...schoolItems, ...teacherItems, ...schoolItems, ...teacherItems, ...schoolItems];
+
+    tickerContent.innerHTML = allItems.join('');
   } catch (err) {
     console.log('Ticker error:', err);
   }
 }
 const links = document.querySelectorAll(".nav-links a");
-
 const currentPage = window.location.pathname.split("/").pop();
-
 links.forEach(link => {
   const linkPage = link.getAttribute("href");
-
   if (linkPage === currentPage) {
     link.classList.add("active");
   } else {

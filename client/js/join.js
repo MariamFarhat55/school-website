@@ -1,4 +1,4 @@
-const API = 'https://school-website-production-31eb.up.railway.app/api';
+const API = 'https://mediumaquamarine-wallaby-658287.hostingersite.com/api';
 
 async function doRegister() {
   const name = document.getElementById('name').value;
