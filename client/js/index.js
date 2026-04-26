@@ -44,10 +44,27 @@ async function loadNews() {
     }
   ];
 
+   let allNews = [...staticNews];
+
+  try {
+    const res = await fetch(`${API}/achievements`);
+    const achievements = await res.json();
+    const withImages = achievements
+      .filter(a => a.image)
+      .slice(0, 3)
+      .map(a => ({
+        title: a.title,
+        desc: a.description,
+        date: new Date(a.date).toLocaleDateString('ar-SA-u-nu-latn'),
+        img: a.image
+      }));
+    allNews = [...withImages, ...staticNews];
+  } catch (e) {}
+
   const container = document.getElementById('news-container');
   if (!container) return;
 
-  container.innerHTML = staticNews.map(n => `
+  container.innerHTML = allNews.map(n => `
     <div class="col-md-6 col-lg-4 fade-in">
       <div class="news-card">
         <img src="${n.img}" alt="${n.title}" class="news-img"/>
